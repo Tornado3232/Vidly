@@ -1,0 +1,20 @@
+﻿@model Vidly.Models.Customer
+@*@model Movie*@
+
+@{
+    ViewData["Title"] = "Customers Details";
+    ViewBag.Title = "Customers Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+
+
+<h2>Membership Type:</h2><p>@Model.MembershipType.Name</p>
+@if (@Model.Birthdate != null)
+{
+    <h2>Birthdate:</h2>
+    <p>@Model.Birthdate</p>
+}
+
+

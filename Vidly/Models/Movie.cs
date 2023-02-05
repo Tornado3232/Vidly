@@ -31,4 +31,6 @@ public partial class Movie
     [Required(ErrorMessage = "The Field Number in Stock Must Be Between 1 and 20")]
     public byte NumberInStock { get; set; }
 
+    public byte NumberAvailable { get; set; }
+
 }

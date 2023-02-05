@@ -18,11 +18,42 @@ namespace Vidly.Controllers.Api
     [ApiController]
     public class NewRentalsController : ControllerBase
     {
+        private IdentityModels _context;
+
+        public readonly IMapper _mapper;
+
+        public NewRentalsController(IMapper mapper)
+        {
+            _context = new IdentityModels();
+            _mapper = mapper;
+        }
+
+
         //POST /api/rentals
         [HttpPost]
         public IActionResult CreateNewRentals(NewRentalDto newRental)
         {
-            throw new NotImplementedException();
+            var customer = _context.Customers.Single(
+                c => c.Id == newRental.CustomerId);
+            
+            var movies= _context.Movies.Where(
+                m => newRental.MovieIds.Contains(m.Id));
+
+            foreach(var movie in movies)
+            {
+                movie.NumberAvailable--;
+
+                var rental = new Rental
+                {
+                    Customer = customer,
+                    Movie = movie,
+                    DateRented= DateTime.Now
+
+                };
+                _context.Rentals.Add(rental);
+            }
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

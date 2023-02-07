@@ -12,14 +12,16 @@
       ]
     },
     {
-      "provider": "cdnjs",
       "library": "bootbox.js@6.0.0",
       "destination": "wwwroot/lib/bootbox.js/"
     },
     {
-      "provider": "cdnjs",
       "library": "datatables@1.10.21",
       "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "library": "typeahead.js@0.11.1",
+      "destination": "wwwroot/lib/typeahead.js/"
     }
   ]
 }
